@@ -1,0 +1,16 @@
+﻿-)MassTransit entriprise bus control sistemi ile asenkron olarak event yönetiminin 2 tipi vardır.
+-)En önemli ayrıntı iletilecek olan mesaj tipi Consumer ve Publisher için aynı proje referansına sahip olmalıdır.
+
+1-)Command
+
+Eğerki gönderilecek mesaj tek bir consumer tarafından consume edilecek ise bu bir command'dir ve
+Send metodu ile gönderilir.Bir publisher ve bir consumer mevcuttur.Gönderilen commandı subscrine olan 
+consumer alır işler ve operasyon tamamlanır.
+
+2-) Event
+
+Eğer gönderilecek mesaj birden fazla consumer tarafından işlenecek ise bu bir eventtir ve MassTransit üzerindeki
+Publish metodu ile sağlanır. Gönderilmek istenen mesajın tipinde default "Fanout" bir exhange oluşur.
+Orneğin "Shared.IMessage" şeklinde.Subscribe olan farklı queue name li consumerlar eventi alır ve işler.
+Aynı queue name sahip birden fazla consumer olur ise sadece bir tanesi mesajı işler diğerleri alamaz.
+Önemli nokta iletilmek istenen mesajın tipidir.
